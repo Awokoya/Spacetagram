@@ -13,8 +13,6 @@ class App extends Component{
   }
 
   componentDidMount() {
-    //new date 
-    //end date 
     let startDate = new Date();
     let newdate = startDate.getDate() - 15
     let yyyy = startDate.getFullYear();

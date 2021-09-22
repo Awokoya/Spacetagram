@@ -8,12 +8,6 @@ const Tile = ({ url, description, title, date, addtoLiked, id, isLiked }) => {
   const LikePicture = () => {
     setLike(!like);
   }
-  if (like) {
-    addtoLiked(id, 1);
-  }
-  else {
-    addtoLiked(id, 0);
-  }
 
   console.log(url)
   let type = url.includes('.jpg') ? 'picture' : 'video'
