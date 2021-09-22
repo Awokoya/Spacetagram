@@ -2,3 +2,8 @@
   font-family: 'Shrikhand', cursive;
   font-size: 60px;
 }
+
+.searchBar {
+  border: 5px solid white;
+  color: white;
+}

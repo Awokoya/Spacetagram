@@ -3,8 +3,6 @@ import Spinner from './components/Spinner';
 import ImageList from './components/ImageList';
 import "./App.css"
 
-
-
 class App extends Component{
   constructor(props) {
     super(props);
@@ -15,7 +13,14 @@ class App extends Component{
   }
 
   componentDidMount() {
-    fetch(`https://api.nasa.gov/planetary/apod?api_key=${process.env.REACT_APP_API_KEY}&start_date=2021-09-01`)
+    //new date 
+    //end date 
+    let startDate = new Date();
+    let newdate = startDate.getDate() - 15
+    let yyyy = startDate.getFullYear();
+    let mm = startDate.getMonth()+1;
+    console.log("rand date", startDate)
+    fetch(`https://api.nasa.gov/planetary/apod?api_key=${process.env.REACT_APP_API_KEY}&start_date=${yyyy}-${mm}-${newdate}`)
     .then(response => response.json())
     .then(data => {
       this.setState({

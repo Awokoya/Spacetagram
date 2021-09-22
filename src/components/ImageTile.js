@@ -1,18 +1,45 @@
-import Button from "./Button"
+import LikeButton from "./LikeButton"
+import './imageTile.css'
+import { useState } from "react"
 
-const Tile = ({ url, description, title, date }) => {
-  return(
+const Tile = ({ url, description, title, date, addtoLiked, id, isLiked }) => {
+  const [like, setLike] = useState(isLiked);
+  let display;
+  const LikePicture = () => {
+    setLike(!like);
+  }
+  if (like) {
+    addtoLiked(id, 1);
+  }
+  else {
+    addtoLiked(id, 0);
+  }
 
-    <div className="card w-20 shadow-sm p-3 mb-5 bg-body rounded">
-      <img src ={url} alt='space'/>
-      <div className="card-body">
-        <h1>{title}</h1>
-        <h6>Date taken = {date}</h6>
-        <p className="card-text"> {description}</p>
-        <Button/>
-      </div>
-    </div>
-  )
-}
+  console.log(url)
+  let type = url.includes('.jpg') ? 'picture' : 'video'
+
+      display = (type === 'picture') ? (
+        <img src={url}
+          alt='APOD: Astronomy Picture of the Day' />
+      ) :
+        <iframe src={url} width="auto" height="auto" controls>
+        </iframe>
+
+      return (
+
+        <div className="card bg-light p-5 mb-5"
+          style={{ maxWidth: "50rem" }}
+        >
+          {display}
+
+          <div className="card-body">
+            <h1>{title}</h1>
+            <p className="card-text"> {description}</p>
+            <h6 style={{ color: "gray" }}>{date}</h6>
+            <LikeButton onClickFunc={LikePicture} currentLike={like} />
+          </div>
+        </div>
+      )
+  }
 
 export default Tile;
