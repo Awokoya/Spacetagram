@@ -3,7 +3,7 @@ import './imageTile.css'
 import { useState } from "react"
 
 const Tile = ({ url, description, title, date, addtoLiked, id, isLiked }) => {
-  const [like, setLike] = useState(isLiked);
+  const [like, setLike] = useState(false);
   let display;
   const LikePicture = () => {
     setLike(!like);
